@@ -1,138 +1,188 @@
-<header id="rs-header" class="rs-header">
-    <!-- Topbar Area Start -->
-    <div class="topbar-area dark-parimary-bg">
-        <div class="container pt-2 pb-2">
-            <div class="row y-middle">
-                <div class="col-md-7">
-                    <ul class="topbar-contact">
-                        <li>
-                            <i class="flaticon-email"></i>
-                            <a href="mailto:support@rstheme.com">www.isg.com</a>
-                        </li>
-                        <li>
-                            <i class="flaticon-location"></i>
-                            Campus universitaire – BP 122, 6033 Cité El Amel 4, Gabès, TUNISIE
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-5 text-right">
-                    <ul class="topbar-right">
-                       
-                        <li class="btn-part @guest @else d-flex @endif">
-                        @guest
-                            <a class="apply-btn" href="{{ url('login') }}">
-                                <i class="fa fa-sign-in"></i>Se connecter
-                            </a>
-                        @else 
-                            <a class="" href="{{ url('profile') }}" style="
-                                display: flex;
-                                margin-right: 25px;
-                                align-items: center;
-                            ">
-                                <img src="{{ asset('storage/'.Auth::user()->photo) }}" alt="" style="
-                                    width: 50px;
-                                    height: 50px;
-                                    border-radius: 50px;
-                                    margin-right: 10px;
-                                ">
-                                {{  Auth::user()->nom }} {{ Auth::user()->prenom }}
-                            </a>
-
-                            <a class="apply-btn" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
-                                {{ __('Déconnecter') }}
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        @endif
-                        </li>
-                    </ul>
-                </div>
+<header id="header" class="default">
+    <div class="topbar">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="topbar-left text-center text-md-left">
+              <ul class="list-inline">
+                <li>
+                  <a href="contact.html"> Contact </a>
+                </li>
+                <li>
+                  <a href="about.html"> About Us </a>
+                </li>
+                <li>
+                  <a href="our_blog.html"> Blog </a>
+                </li>
+                <li>
+                  <a href="partner_with_us.html"> Become a Partner </a>
+                </li>
+              </ul>
             </div>
+          </div>
+          <div class="col-md-8">
+            <div class="topbar-right text-center text-md-right">
+              <ul class="list-inline">
+                <li>
+                  <a href="#">
+                    <i class="far fa-calendar-alt"></i>Table Bookings </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="far fa-bookmark"></i>Bookmarks <span class="badge badge-secondary">2</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="fas fa-shopping-cart"></i>Food Orders <span class="badge badge-secondary">3</span>
+                  </a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="dropdown-toggle-no-caret" href="#" id="accountDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user-circle"></i>John Doe <i class="fas fa-caret-down"></i>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="accountDropdown">
+                    <a class="dropdown-item" href="my_profile_dashbord.html"> My Profile</a>
+                    <a class="dropdown-item" href="#"> Bookmarks</a>
+                    <a class="dropdown-item" href="#"> Booking Tables</a>
+                    <a class="dropdown-item" href="#"> Find Friends</a>
+                    <a class="dropdown-item" href="setting.html"> Setting</a>
+                    <a class="dropdown-item" href="signin.html"> Logout</a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-    <!-- Topbar Area End -->
-
-    <!-- Menu Start -->
-    <div class="menu-area menu-sticky" style="box-shadow: 0px 0px 4px black;">
-        <div class="container">
-            <div class="row y-middle">
-                <div class="col-lg-2">
-                    <div class="logo-cat-wrap">
-                        <div class="logo-part">
-                            <a href="{{ url('/') }}">
-                                <img src="http://127.0.0.1:8000/front/assets//images/easy-learn.png" alt="">
-                            </a>
+    <div class="menu">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2 col-sm-12 col-xs-12">
+            <div class="menu-left text-center text-md-left">
+              <div class="logo-box">
+                <a href="index.html">
+                  <img src="images/logo.svg" alt="">
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-10 col-sm-12 col-xs-12">
+            <div class="menu-items">
+              <nav class="navbar navbar-expand-lg navbar-light bg-light menu-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto nav-text">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="index.html">Acceuil </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="how_to_orders.html">Service</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="recipes.html">Fournisseurs</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="partners.html">A propos</a>
+                    </li>
+                  
+                    <li class="nav-item">
+                      <a class="nav-link" href="browse_places.html">Contact</a>
+                    </li>
+                  </ul>
+                </div>
+              </nav>
+              <div class="icons-set">
+                <ul class="list-inline">
+                  <li class="icon-items nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle-no-caret" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-search"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown1">
+                      <div class="notification-item">
+                        <div class="search-details">
+                          <form class="form-inline">
+                            <input class="form-control " type="search" placeholder="Search" aria-label="Search">
+                            <button class="s-btn btn-link " type="submit">
+                              <i class="fas fa-search"></i>
+                            </button>
+                          </form>
                         </div>
+                      </div>
                     </div>
-                </div>
-                <div class="col-lg-10 text-right">
-                    <div class="rs-menu-area">
-                        <div class="main-menu">
-                            <div class="mobile-menu">
-                                <a class="rs-menu-toggle rs-menu-toggle-close">
-                                    <i class="fa fa-bars"></i>
-                                </a>
+                  </li>
+                  <li class="icon-items nav-item dropdown">
+                    <a class="nav-link dropdown-toggle-no-caret" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-bell"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown2">
+                      <div class="notification-item">
+                        <div class="property">
+                          <ul>
+                            <li>
+                              <div class="setting">
+                                <a href="#">Setting</a>
+                              </div>
+                            </li>
+                            <li>
+                              <div class="clear">
+                                <a href="#">Clear</a>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="notification-details">
+                          <div class="media">
+                            <div class="media-left">
+                              <a href="#">
+                                <img src="images/notification-img-2.png" alt="">
+                              </a>
                             </div>
-                            @guest 
-                            <nav class="rs-menu rs-menu-close" style="height: 0px;">
-                                <ul class="nav-menu">
-                                    <li class="menu-item-has-children">
-                                        <a href="{{ url('/') }}" class="active">Accueil</a>
-                                    </li>
-                                    <li class="menu-item-has-children">
-                                        <a href="#sections">Projet</a>
-                                    </li>
-                                    <li class="menu-item-has-children">
-                                        <a href="#formations">Concours</a>
-                                    </li>
-                                    <li class="menu-item-has-children">
-                                        <a href="#enseignant">A propos</a>
-                                    </li>
-                                    
-                                  
-                                    <li class="menu-item-has-children">
-                                        <a href="{{ url('contact') }}" class="@if(Request::is('contact')) active @endif">Contact</a>
-                                    </li>
-                                </ul> <!-- //.nav-menu -->
-                            </nav>  
-                            @else 
-                            <nav class="rs-menu rs-menu-close" style="height: 0px;">
-                                <ul class="nav-menu">
-                                    <li class="menu-item-has-children">
-                                        <a href="{{ url('/') }}" class="@if(Request::is('home')) active @endif">Accueil</a>
-                                    </li>
-                                    <li class="menu-item-has-children">
-                                        <a href="{{ url('/modules') }}" class="@if(Request::is('modules')) active @endif">Modules</a>
-                                    </li>
-                                    <li class="menu-item-has-children">
-                                        <a href="{{ url('/matieres') }}" class="@if(Request::is('matieres*')) active @endif">Matière</a>
-                                    </li>
-                                    <li class="menu-item-has-children">
-                                        <a href="{{ url('formations') }}" class="@if(Request::is('formations*')) active @endif">Formations</a>
-                                    </li>
-                                    <li class="menu-item-has-children">
-                                        <a href="{{ url('forums') }}" class="@if(Request::is('forum')) active @endif">forum</a>
-                                    </li>
-                                    <li class="menu-item-has-children">
-                                        <a href="{{ url('contact') }}" class="@if(Request::is('contact')) active @endif">Contact</a>
-                                    </li>
-                                </ul> <!-- //.nav-menu -->
-                            </nav>  
-                            @endif                                       
-                        </div> <!-- //.main-menu -->                                
+                            <div class="media-body">
+                              <h4 class="media-heading">Jassica William</h4>
+                              <p>comment on your Video.</p>
+                              <div class="comment-date">10 min ago</div>
+                            </div>
+                          </div>
+                          <div class="media">
+                            <div class="media-left">
+                              <a href="#">
+                                <img src="images/notification-img-3.png" alt="">
+                              </a>
+                            </div>
+                            <div class="media-body">
+                              <h4 class="media-heading">Congratulations!</h4>
+                              <p>Your Order is Accepted.</p>
+                              <div class="comment-date"> 15 min ago </div>
+                            </div>
+                          </div>
+                          <div class="media">
+                            <div class="media-left">
+                              <a href="#">
+                                <img src="images/notification-img-4.png" alt="">
+                              </a>
+                            </div>
+                            <div class="media-body">
+                              <h4 class="media-heading">Order Delivered!</h4>
+                              <p>Your Order is Delivered.</p>
+                              <div class="comment-date">20 min ago</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                </div>
-               
+                  </li>
+                  <li class="partner-btn">
+                    <a href="{{ url('login') }}" class="b-btn btn-link">Se connecter</a>
+                  </li>
+                </ul>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-    <!-- Menu End --> 
-
-    <!-- Canvas Menu start -->
-    
-    <!-- Canvas Menu end -->
-</header>
+  </header>

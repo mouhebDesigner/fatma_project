@@ -7,10 +7,10 @@
         </span>
 
         <div class="info-box-content">
-          <span class="info-box-text text-white">
-              Les Concours
+          <span class="info-box-text text-dark">
+              Fournisseurs
           </span>
-          <span class="info-box-number text-white">
+          <span class="info-box-number text-dark">
               12
           </span>
         </div>
@@ -25,10 +25,10 @@
         </span>
 
         <div class="info-box-content">
-          <span class="info-box-text text-white">
-              Les Etudiants
+          <span class="info-box-text text-dark">
+              Clients
           </span>
-          <span class="info-box-number text-white">
+          <span class="info-box-number text-dark">
               12
           </span>
         </div>
@@ -43,10 +43,10 @@
         </span>
 
         <div class="info-box-content">
-          <span class="info-box-text text-white">
-              Jury
+          <span class="info-box-text text-dark">
+              Missions
           </span>
-          <span class="info-box-number text-white">
+          <span class="info-box-number text-dark">
               12
           </span>
         </div>

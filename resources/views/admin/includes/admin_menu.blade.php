@@ -20,20 +20,29 @@
             </p>
         </a>
     </li>
-    <li class="nav-item @if(Request::is('admin/concours*')) active @endif">
-        <a href="{{ url('admin/concours') }}" class="nav-link ">
+    <li class="nav-item @if(Request::is('admin/missions*')) active @endif">
+        <a href="{{ url('admin/missions') }}" class="nav-link ">
             <i class="nav-icon fas fa-chalkboard-teacher"></i>
             <p>
-            Gérer les concours
+            Gérer les missions
+            <i class="right fas fa-angle-left"></i>
+            </p>
+        </a>
+    </li>
+    <li class="nav-item @if(Request::is('admin/fournisseurs*')) active @endif">
+        <a href="{{ url('admin/fournisseurs') }}" class="nav-link ">
+            <i class="nav-icon fas fa-user"></i>
+            <p>
+            Gérer les fournisseurs
             <i class="right fas fa-angle-left"></i>
             </p>
         </a>
     </li>
     <li class="nav-item @if(Request::is('admin/prix*')) active @endif">
-        <a href="{{ url('admin/prix') }}" class="nav-link ">
+        <a href="{{ url('admin/clients') }}" class="nav-link ">
             <i class="nav-icon fas fa-user"></i>
             <p>
-            Gérer les prix
+            Gérer les clients
             <i class="right fas fa-angle-left"></i>
             </p>
         </a>

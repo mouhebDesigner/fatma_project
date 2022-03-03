@@ -1,50 +1,77 @@
 @extends('layouts.master')
 
-@section('includes')
-    @include('includes.header')
-@endsection
+
 
 @section('content')
-    <div class="rs-login pt-100 pb-100 md-pt-70 md-pb-70">
+    <section class="title-bar">
         <div class="container">
-            <div class="noticed">
-                <div class="main-part">                           
-                    <div class="method-account">
-                        <h2 class="login">Connexion</h2>
-                        <form method="POST" action="/home">
-                            @csrf
-                            <div class="form_inputs">
-                                <input type="text" name="email" placeholder="Saisir votre email">
-                                @error('email')
-                                    <p class="error_input_message">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <input type="password" name="password" placeholder="Saisir votre mot de passe">
-                                @error('password')
-                                    <p class="error_input_message">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            <button type="submit" class="readon submit-btn">connecter</button>
-                            <div class="form-group row mb-0">
-                                <div class="col-md-8 offset-md-4">
-                                    
-
-                                    @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                                            {{ __('Mot de passe oubliè?') }}
-                                        </a>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="last-password">
-                                <p>Vous n'avez pas un compte? <a href="{{ url('/') }}">S'inscrire maintenant</a></p>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+        <div class="row">
+            <div class="col-md-6">
+            <div class="left-title-text">
+                <h3>Login Now</h3>
+            </div>
+            </div>
+            <div class="col-md-6">
+            <div class="right-title-text">
+                <ul>
+                <li class="breadcrumb-item">
+                    <a href="index.html">Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Login Now</li>
+                </ul>
+            </div>
             </div>
         </div>
-    </div>
+        </div>
+    </section>
+    <section class="login_register">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-6 col-12">
+              <h1>Login Now</h1>
+              <div class="login-container">
+                <div class="row">
+                  <div class="col-lg-12 col-md-12 col-12">
+                    <form>
+                      <div class="login-form" action="{{ url('home') }}" method="GET">
+                        <div class="login-logo">
+                          <a href="index.html">
+                            <img src="images/login-register/logo.svg" alt="">
+                          </a>
+                        </div>
+                        <div class="social-btns">
+                          <button class="facebook-btn">
+                            <i class="fab fa-facebook-f"></i>Continue with facebook </button>
+                          <button class="google-btn">
+                            <i class="fab fa-google"></i>Continue with Google </button>
+                        </div>
+                        <div class="or">
+                          <p> Or </p>
+                        </div>
+                        <div class="form-group">
+                          <input type="text" class="video-form" id="emailphonenumber" placeholder="Type Email or Phone Number">
+                        </div>
+                        <div class="form-group">
+                          <input type="password" class="video-form" id="yourPassword" placeholder="Password">
+                        </div>
+                        <button class="login-btn btn-link">
+                            <a href="{{ url('home') }}" >Connecter</a>
+                        </button>
+                        <div class="forgot-password">
+                          <a href="#">Forgot Password?</a>
+                          <p>Don’t have an account? <a href="signup.html">
+                              <span style="color:#ffa803;">- Register Now</span>
+                            </a>
+                          </p>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 @endsection
 
