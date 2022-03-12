@@ -99,7 +99,7 @@
               });
           });
       });
-  </script>
+    </script>
 </body>
 
 <!-- Mirrored from altair-html-rtl.tzdthemes.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 29 Nov 2020 11:31:56 GMT -->
