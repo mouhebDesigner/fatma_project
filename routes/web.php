@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\FournisseurController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +18,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::middleware(['auth'])->group(function () {
+    Route::prefix('admin')->name('admin.')->group(function () {
+        Route::resources([
+            'categories' => CategorieController::class,
+            'fournisseurs' => FournisseurController::class,
+        ]);
+
+    });
+});
 Route::get('/home', function () {
     return view('admin.home');
 });
@@ -29,3 +41,6 @@ Route::get('register/enseignant', function(){
 Route::get('register/etudiant', function(){
     return view('auth.register_etudiant');
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

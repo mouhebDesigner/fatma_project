@@ -1,0 +1,23 @@
+
+.title {
+  font-size: 48px;
+  color: #ffa803 !important;
+  font-weight: 700;
+  text-transform: none;
+  position: relative;
+}
+.left-text-b p {
+  font-size: 14px;
+  line-height: 26px;
+  color: black !important;
+  font-weight: 400;
+}
+.exeption {
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 27px;
+  position: relative;
+  color: #000;
+  line-height: 1.6em;
+  text-transform: none;
+}

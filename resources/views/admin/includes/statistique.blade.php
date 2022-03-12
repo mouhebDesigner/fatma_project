@@ -11,7 +11,7 @@
               Fournisseurs
           </span>
           <span class="info-box-number text-dark">
-              12
+              {{ App\Models\User::where('role', 'fournisseur')->count() }}
           </span>
         </div>
         <!-- /.info-box-content -->
@@ -29,7 +29,7 @@
               Clients
           </span>
           <span class="info-box-number text-dark">
-              12
+              {{ App\Models\User::where('role', 'client')->count() }}
           </span>
         </div>
         <!-- /.info-box-content -->

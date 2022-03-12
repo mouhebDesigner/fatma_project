@@ -1,5 +1,5 @@
 <section class="block-preview">
-    <div class="cover-banner" style="background-image: url({{ asset('front/images/homepage/banner.jpg') }})"></div>
+    <div class="cover-banner" style="background-image: url({{ asset('front/images/background_slider.webp') }})"></div>
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-6 col-sm-12">

@@ -12,6 +12,7 @@
         
         <link href="{{ asset('front/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
         <link href="{{ asset('front/css/style.css') }}" rel="stylesheet">
+        <link href="{{ asset('front/css/main.css') }}" rel="stylesheet">
         <link href="{{ asset('front/css/responsive.css') }}" rel="stylesheet">
         <link href="{{ asset('front/css/mega.menu.css') }}" rel="stylesheet">
         <link href="{{ asset('front/css/owlslider.css') }}" rel="stylesheet">
@@ -25,12 +26,16 @@
 
         @include('includes.header')
         @include('includes.slider')
-        @include('includes.browse_places')
+
         @yield('content')
+
         @include('includes.footer')
         
         
         <script src="{{ asset('front/vendor/jquery/jquery.min.js') }}"></script>
+
+        
+
         <script src="{{ asset('front/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
         
         <script src="{{ asset('front/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
