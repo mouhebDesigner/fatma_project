@@ -29,11 +29,11 @@
             </p>
         </a>
     </li>
-    <li class="nav-item @if(Request::is('admin/prix*')) active @endif">
+    <li class="nav-item @if(Request::is('admin/clients*')) active @endif">
         <a href="{{ url('admin/clients') }}" class="nav-link ">
             <i class="nav-icon fas fa-user"></i>
             <p>
-            Gérer les clients
+            Les Clients
             <i class="right fas fa-angle-left"></i>
             </p>
         </a>

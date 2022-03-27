@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('nom');
             $table->string('prenom');
             $table->string('email')->unique();
+            $table->biginteger('cin')->unique()->nullable();
             $table->biginteger('numtel')->unique();
             $table->date('date_naissance')->nullable();
             $table->enum('genre', ['male', 'female']);
@@ -26,7 +27,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('role', ["client", "admin", "fournisseur"]);
-            $table->boolean('approuver')->nullable();
+            $table->boolean('approuver')->default(0)->nullable();
             $table->foreignId('categorie_id')->nullable()->constrained('categories')->onUpdate('cascade');
             $table->rememberToken();
             $table->timestamps();

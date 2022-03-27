@@ -17,7 +17,7 @@ class FournisseurController extends Controller
      */
     public function index() 
     {
-        $fournisseurs = User::where('role', 'fournisseur')->where('approuver', 1)->orderBy('created_at', 'desc')->paginate(10);
+        $fournisseurs = User::where('role', 'fournisseur')->where('approuver', 0)->orderBy('created_at', 'desc')->paginate(10);
 
         return view('admin.fournisseurs.index', compact('fournisseurs'));
     }
@@ -40,16 +40,16 @@ class FournisseurController extends Controller
      */
     public function store(FournisseurRequest $request)
     {
-        $fournisseur = new User();
-        $fournisseur->nom = $request->nom;
-        $fournisseur->prenom = $request->prenom;
-        $fournisseur->email = $request->email;
-        $fournisseur->password = Hash::make($request->password);
-        $fournisseur->numtel = $request->numtel;
-        $fournisseur->date_naissance = $request->date_naissance;
-        $fournisseur->role = "fournisseur";
-        $fournisseur->approuver = 1;
-        $fournisseur->categorie_id = $request->categorie_id;
+        $fournisseur = User::create($request->all());
+        // $fournisseur->nom = $request->nom;
+        // $fournisseur->prenom = $request->prenom;
+        // $fournisseur->email = $request->email;
+        // $fournisseur->password = Hash::make($request->password);
+        // $fournisseur->numtel = $request->numtel;
+        // $fournisseur->date_naissance = $request->date_naissance;
+        // $fournisseur->role = "fournisseur";
+        // $fournisseur->approuver = 1;
+        // $fournisseur->categorie_id = $request->categorie_id;
         
         $fournisseur->save();
 
@@ -100,20 +100,19 @@ class FournisseurController extends Controller
             "email" =>  "required | string | email | max:255 | unique:users,email,".$fournisseur->id.",id",
             'nom' => 'required | string | max:255',
             'prenom' => 'required | string | max:255',
-            'date_naissance' => 'required',
+            'adresse' => 'required | string | max:255',
+            'categorie_id' => 'required',
         ]);
 
-        $fournisseur =  User::find($id);
+        $fournisseur->update($request->all());
 
-        $fournisseur->nom = $request->nom;
-        $fournisseur->prenom = $request->prenom;
-        $fournisseur->email = $request->email;
-        $fournisseur->password = Hash::make($request->password);
-        $fournisseur->numtel = $request->numtel;
-        $fournisseur->date_naissance = $request->date_naissance;
-      
+        if($request->password != ""){
+            $fournisseur->password = Hash::make($request->password);
 
-        $fournisseur->save();
+            $fournisseur->save();
+        }
+
+        
 
 
 
@@ -129,7 +128,10 @@ class FournisseurController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect('admin/fournisseurs')->with('deleted', 'L\'fournisseur a été supprimer avec succés');
+
+        return response()->json([
+            "deleted" => "La fournisseur a été supprimer avec succés"
+        ]);
         
     }
 }

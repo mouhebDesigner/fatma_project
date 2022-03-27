@@ -58,13 +58,6 @@
                                                         </th>
                                                         
                                                         <th>
-                                                            date de création
-                                                        </th>
-                                                        
-                                                        <th>
-                                                            date de modification
-                                                        </th>
-                                                        <th>
                                                             Action
                                                         </th>
 
@@ -76,8 +69,6 @@
                                                         <tr>
                                                             <td>{{ $categorie->id }}</td>
                                                             <td>{{ $categorie->label }}</td>
-                                                            <td>{{ $categorie->created_at }}</td>
-                                                            <td>{{ $categorie->updated_at }}</td>
                                                             <td>
                                                                 <div class="d-flex justify-content-around">
                                                                     

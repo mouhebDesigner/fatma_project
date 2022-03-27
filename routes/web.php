@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\FournisseurController;
 
@@ -24,8 +26,12 @@ Route::middleware(['auth'])->group(function () {
         Route::resources([
             'categories' => CategorieController::class,
             'fournisseurs' => FournisseurController::class,
+            'clients' => ClientController::class,
+            'users' => UserController::class,
         ]);
-
+        Route::get('commandes/{client}', [CommandeController::class, 'getCommandeByClient'])->name('commandes.client');
+        Route::get('approuver/{user}', [UserController::class, 'approuver'])->name('approuver');
+        Route::get('refuser/{user}', [UserController::class, 'refuser'])->name('refuser');
     });
 });
 Route::get('/home', function () {
@@ -34,13 +40,13 @@ Route::get('/home', function () {
 Route::get('/login', function () {
     return view('auth.login');
 });
-Route::get('register/enseignant', function(){
-    return view('auth.register_enseignant');
-});
+Route::get('register/fournisseur', function(){
+    return view('auth.register_fournisseur');
+})->name('fournisseur_register');
 
-Route::get('register/etudiant', function(){
-    return view('auth.register_etudiant');
-});
+Route::get('register/client', function(){
+    return view('auth.register_client');
+})->name('client_register');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

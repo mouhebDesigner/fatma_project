@@ -63,7 +63,7 @@
             <div class="menu-left text-center text-md-left">
               <div class="logo-box">
                 <a href="index.html">
-                  <img src="images/logo.svg" alt="">
+                  <img src="{{ asset('front/images/logo.svg')}}" alt="">
                 </a>
               </div>
             </div>

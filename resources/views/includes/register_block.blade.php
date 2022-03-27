@@ -30,7 +30,7 @@
                         <img src="images/partner-with-us/icon-2.svg" alt="">
                         <h4>Compte fournisseur</h4>
                         <p>Praesent rhoncus urna nec justo suscipit, id congue justo dictum.</p>
-                        <a href="add_driver.html" class="partner-btn1 btn-link">Inscrire</a>
+                        <a href="{{ route('fournisseur_register') }}" class="partner-btn1 btn-link">Inscrire</a>
                     </div>
                 </div>
             </div>

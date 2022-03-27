@@ -6,6 +6,10 @@
   text-transform: none;
   position: relative;
 }
+.left-text-b  {
+
+  padding-top: 300px;
+}
 .left-text-b p {
   font-size: 14px;
   line-height: 26px;
@@ -20,4 +24,8 @@
   color: #000;
   line-height: 1.6em;
   text-transform: none;
+}
+
+.block-preview{
+  height: 800px;
 }

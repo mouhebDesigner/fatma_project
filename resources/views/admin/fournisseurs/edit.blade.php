@@ -44,6 +44,21 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
+                                    <label for="category" class="form-label">Spécialité <span
+                                            style="color: red">* </span></label>
+                                    <select name="categorie_id"
+                                        class="form-control  @error('categorie_id') invalid-input @enderror">
+                                        <option value="" selected disabled>Spécialité</option>
+                                        @foreach(App\Models\Categorie::all() as $category)
+                                            <option value="{{ $category->id }}" @if($fournisseur->categorie->id == $category->id)
+                                                selected @endif>{{ $category->label }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('categorie_id')
+                                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
                                     <label for="email">Email</label>
                                     <input type="text" class="form-control" name="email" value="{{ $fournisseur->email }}" id="email" placeholder="Saisir email">
                                     @error('email')
@@ -59,9 +74,16 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="date_naissance">date naissance </label>
-                                    <input type="date" class="form-control" name="date_naissance" value="{{ $fournisseur->date_naissance }}" id="date_naissance" placeholder="Saisir date_naissance">
-                                    @error('date_naissance')
+                                    <label for="cin">CIN</label>
+                                    <input type="number" class="form-control" name="cin" value="{{ $fournisseur->cin }}" id="cin" placeholder="Saisir cin">
+                                    @error('cin')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="adresse">Adresse </label>
+                                    <input type="text" class="form-control" name="adresse" value="{{ $fournisseur->adresse }}" id="adresse" placeholder="Saisir adresse">
+                                    @error('adresse')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>

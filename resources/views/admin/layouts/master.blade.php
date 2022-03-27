@@ -98,6 +98,44 @@
                   }
               });
           });
+          $(".approuver-confirm").on('click', function(e){
+              e.preventDefault();
+              console.log($(this).data('model'));
+              var href = $(this).attr('href');
+              swal({
+                  title: "êtes vous sûr?",
+                  text: "Voulez vous approuver ce "+$(this).data('model'),
+                  icon: "primary",
+                  buttons: true,
+                  dangerMode: false,
+              })
+              .then((willEdit) => {
+                  if (willEdit) {
+                      window.location.href = href;
+                  } else {
+                      swal("Votre action est annulé");
+                  }
+              });
+          });
+          $(".refuser-confirm").on('click', function(e){
+              e.preventDefault();
+              console.log($(this).data('model'));
+              var href = $(this).attr('href');
+              swal({
+                  title: "êtes vous sûr?",
+                  text: "Voulez vous refuser ce "+$(this).data('model'),
+                  icon: "primary",
+                  buttons: true,
+                  dangerMode: false,
+              })
+              .then((willEdit) => {
+                  if (willEdit) {
+                      window.location.href = href;
+                  } else {
+                      swal("Votre action est annulé");
+                  }
+              });
+          });
       });
     </script>
 </body>

@@ -33,7 +33,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="d-flex justify-content-between">
-                                            <h3 class="m-0">Liste des fournisseurs</h3>
+                                            <h3 class="m-0">Liste des clients</h3>
                                             
                                         </div>
                                     </div>
@@ -61,13 +61,7 @@
                                                             Email
                                                         </th>
                                                         <th>
-                                                            Adresse
-                                                        </th>
-                                                        <th>
                                                             Téléphone
-                                                        </th>
-                                                        <th>
-                                                            Profession
                                                         </th>
                                                         <th>
                                                             Action
@@ -75,32 +69,22 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach($fournisseurs as $fournisseur)
+                                                    @foreach($clients as $client)
                                                         <tr>
-                                                            <td>{{ $fournisseur->id }}</td>
-                                                            <td>{{ $fournisseur->nom }}</td>
-                                                            <td>{{ $fournisseur->prenom }}</td>
-                                                            <td>{{ $fournisseur->email }}</td>
-                                                            <td>{{ $fournisseur->adresse }}</td>
-                                                            <td>{{ $fournisseur->numtel }}</td>
-                                                            <td>{{ $fournisseur->categorie->label }}</td>
+                                                            <td>{{ $client->id }}</td>
+                                                            <td>{{ $client->nom }}</td>
+                                                            <td>{{ $client->prenom }}</td>
+                                                            <td>{{ $client->email }}</td>
+                                                            <td>{{ $client->numtel }}</td>
                                                             <td>
-                                                                <div class="d-flex justify-content-around">
-                                                                    
-                                                                    <button type="submit" class="btn-delete delete-confirm" data-model="fournisseur" data-url="{{ route('admin.fournisseurs.destroy', ['fournisseur' => $fournisseur]) }}" >
-                                                                        <i class="fa fa-trash"></i>
-                                                                    </button>
-                                                                    <a href="{{ url('admin/fournisseurs/'.$fournisseur->id.'/edit') }}" data-model="fournisseur" class="btn-edit edit-confirm">
-                                                                        <i class="fa fa-pen"></i>
-                                                                    </a>
-                                                                </div>
+                                                                <a href="{{ route('admin.commandes.client', ['client' => $client]) }}">Lister commandes</a>
                                                             </td>
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
                                             </table>
                                             <div class="d-flex justify-content-center">
-                                                {{ $fournisseurs->links() }}
+                                                {{ $clients->links() }}
                                             </div>
                                         </div>
                                     </div>
