@@ -18,7 +18,11 @@
             </div>
             <div class="content">
                 <div class="container-fluid">
-                    @include('admin.includes.statistique')
+                    @if(Auth::user()->isAdmin())
+                        @include('admin.includes.statistique')
+                    @else 
+                        @include('admin.includes.statistiqueFournisseur')
+                    @endif
                 </div>
             </div>
         </div>

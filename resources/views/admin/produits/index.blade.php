@@ -30,7 +30,7 @@
 
                             <div class="card">
                             <div class="card-header">
-                                <h3 class="m-0">Liste des catégories</h3>
+                                <h3 class="m-0">Liste des produits</h3>
 
                             </div>
                             <!-- /.card-header -->
@@ -40,7 +40,7 @@
                                         <div class="col-md-12">
                                             <div class="d-flex justify-content-between">
                                              
-                                                <a href="{{ url('admin/categories/create') }}">
+                                                <a href="{{ url('fournisseur/produits/create') }}">
                                                     <i class="fa fa-plus"></i>
                                                 </a>
                                             </div>
@@ -55,9 +55,17 @@
                                                             #
                                                         </th>
                                                         <th>
-                                                            label
+                                                            Nom
                                                         </th>
-                                                        
+                                                        <th>
+                                                            Quantité
+                                                        </th>
+                                                        <th>
+                                                            Prix
+                                                        </th>
+                                                        <th>
+                                                            Catégorie
+                                                        </th>
                                                         <th>
                                                             Action
                                                         </th>
@@ -66,17 +74,20 @@
 
                                                 </thead>
                                                 <tbody>
-                                                    @foreach($categories as $categorie)
+                                                    @foreach($produits as $produit)
                                                         <tr>
-                                                            <td>{{ $categorie->id }}</td>
-                                                            <td>{{ $categorie->label }}</td>
+                                                            <td>{{ $produit->id }}</td>
+                                                            <td>{{ $produit->name }}</td>
+                                                            <td>{{ $produit->quantity }}</td>
+                                                            <td>{{ $produit->price }}</td>
+                                                            <td>{{ $produit->categorie->label }}</td>
                                                             <td>
                                                                 <div class="d-flex justify-content-around">
                                                                     
-                                                                    <button type="submit" class="btn-delete delete-confirm" data-model="categorie" data-url="{{ route('admin.categories.destroy', ['category' => $categorie]) }}" >
+                                                                    <button type="submit" class="btn-delete delete-confirm" data-model="categorie" data-url="{{ route('fournisseur.produits.destroy', ['produit' => $produit]) }}" >
                                                                         <i class="fa fa-trash"></i>
                                                                     </button>
-                                                                    <a href="{{ url('admin/categories/'.$categorie->id.'/edit') }}" data-model="categorie" class="edit-confirm">
+                                                                    <a href="{{ route('fournisseur.produits.edit', ['produit' => $produit]) }}" data-model="categorie" class="edit-confirm">
                                                                         <i class="fa fa-edit"></i>
                                                                     </a>
                                                                  

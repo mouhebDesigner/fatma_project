@@ -49,11 +49,20 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+        if($data['role'] == "fournisseur"){
+
+            return Validator::make($data, [
+                'nom' => ['required', 'string', 'max:255'],
+                'prenom' => ['required', 'string', 'max:255'],
+                'nom_societe' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+                "numtel" => ['required', 'numeric'],
+                "numtel_societe" => ['required', 'numeric', 'unique:users'],
+                "adresse" => ['required', 'string', 'max:255'],
+                "categorie_id" => ['required'],
+            ]);
+        }
     }
 
     /**
@@ -63,11 +72,23 @@ class RegisterController extends Controller
      * @return \App\Models\User
      */
     protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+    {   
+        if($data['role'] == "fournisseur"){
+
+            return User::create([
+                "nom" => $data['nom'],
+                "prenom" => $data['prenom'],
+                "nom_societe" => $data['nom_societe'],
+                "email" => $data['email'],
+                "numtel" => $data['numtel'],
+                "numtel_societe" => $data['numtel_societe'],
+                "adresse" => $data['adresse'],
+                "categorie_id" => $data['categorie_id'],
+                'password' => Hash::make($data['password']),
+                'role' => $data['role']
+            ]);
+        }else {
+
+        }
     }
 }

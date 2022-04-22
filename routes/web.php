@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\FournisseurController;
+use App\Http\Controllers\Admin\ProduitController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,14 @@ Route::middleware(['auth'])->group(function () {
         Route::get('commandes/{client}', [CommandeController::class, 'getCommandeByClient'])->name('commandes.client');
         Route::get('approuver/{user}', [UserController::class, 'approuver'])->name('approuver');
         Route::get('refuser/{user}', [UserController::class, 'refuser'])->name('refuser');
+    });
+});
+Route::middleware(['auth'])->group(function () {
+    Route::prefix('fournisseur')->name('fournisseur.')->group(function () {
+        Route::resources([
+            'produits' => ProduitController::class,
+        ]);
+        Route::get('commandes/{client}', [CommandeController::class, 'getCommandeByClient'])->name('commandes.client');
     });
 });
 Route::get('/home', function () {

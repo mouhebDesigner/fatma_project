@@ -13,7 +13,7 @@
           <img src="{{ asset('assets/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">User name connected </a>
+          <a href="#" class="d-block">{{ Auth::user()->nom }} {{ Auth::user()->prenom }} </a>
         </div>
       </div>
 
@@ -38,7 +38,11 @@
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
-        @include('admin.includes.admin_menu')
+        @if(Auth::user()->isAdmin())
+          @include('admin.includes.admin_menu')
+        @else 
+          @include('admin.includes.fournisseur_menu')
+        @endif
       </nav>
       <!-- /.sidebar-menu -->
     </div>
