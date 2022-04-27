@@ -30,7 +30,12 @@
 
                             <div class="card">
                             <div class="card-header">
-                                <h3 class="m-0">Liste des produits</h3>
+                                <div class="d-flex justify-content-between">
+                                    <h3 class="m-0">Liste des produits</h3>
+                                    <a href="{{ url('fournisseur/produits/create') }}" class="add_button">
+                                        <i class="fa fa-plus"></i>
+                                    </a>
+                                </div>
 
                             </div>
                             <!-- /.card-header -->
@@ -38,12 +43,7 @@
                                 <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <div class="d-flex justify-content-between">
-                                             
-                                                <a href="{{ url('fournisseur/produits/create') }}">
-                                                    <i class="fa fa-plus"></i>
-                                                </a>
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                     <div class="row">
@@ -84,14 +84,15 @@
                                                             <td>
                                                                 <div class="d-flex justify-content-around">
                                                                     
-                                                                    <button type="submit" class="btn-delete delete-confirm" data-model="categorie" data-url="{{ route('fournisseur.produits.destroy', ['produit' => $produit]) }}" >
+                                                                    <button type="submit" class="btn-delete delete-confirm" data-model="produit" data-url="{{ route('fournisseur.produits.destroy', ['produit' => $produit]) }}" >
                                                                         <i class="fa fa-trash"></i>
                                                                     </button>
-                                                                    <a href="{{ route('fournisseur.produits.edit', ['produit' => $produit]) }}" data-model="categorie" class="edit-confirm">
+                                                                    <a href="{{ route('fournisseur.produits.edit', ['produit' => $produit]) }}" data-model="produit" class="edit-confirm">
                                                                         <i class="fa fa-edit"></i>
                                                                     </a>
-                                                                 
-                                                                   
+                                                                    <a href="{{ route('fournisseur.produits.show', ['produit' => $produit]) }}" data-model="produit" class="show-btn">
+                                                                        <i class="fa fa-info"></i>
+                                                                    </a>
                                                                 </div>
                                                             </td>
                                                         </tr>

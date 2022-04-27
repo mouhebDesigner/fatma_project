@@ -24,6 +24,7 @@
                         <!-- form start -->
                         <form action="{{ url('fournisseur/produits') }}" method="post" enctype="multipart/form-data">
                         @csrf
+                            <input type="hidden" value="{{ Auth::user()->id }}" name="user_id"> 
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="name">Titre</label>

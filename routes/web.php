@@ -6,6 +6,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\FournisseurController;
 use App\Http\Controllers\Admin\ProduitController;
+use App\Http\Controllers\ProduitController as ProduitControllerFront;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,8 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/home', function () {
     return view('admin.home');
 });
+Route::resource('produits', ProduitControllerFront::class)->only('show', 'index');
+
 Route::get('/login', function () {
     return view('auth.login');
 });

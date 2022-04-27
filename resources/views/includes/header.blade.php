@@ -26,17 +26,17 @@
                       <a class="nav-link" href="index.html">Acceuil </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="how_to_orders.html">Service</a>
+                      <a class="nav-link" href="{{ url('/produits') }}">Produits</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="recipes.html">Fournisseurs</a>
+                      <a class="nav-link" href="{{ url('/fournisseurs') }}">Fournisseurs</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="partners.html">A propos</a>
+                      <a class="nav-link" href="#">A propos</a>
                     </li>
                   
                     <li class="nav-item">
-                      <a class="nav-link" href="browse_places.html">Contact</a>
+                      <a class="nav-link" href="{{ url('contact') }}">Contact</a>
                     </li>
                   </ul>
                 </div>

@@ -14,7 +14,8 @@ class Produit extends Model
         "description",
         "quantity",
         "price",
-        "categorie_id"
+        "categorie_id",
+        "user_id"
     ];
 
     public function ressources(){
@@ -23,5 +24,9 @@ class Produit extends Model
 
     public function categorie(){
         return $this->belongsTo(Categorie::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }

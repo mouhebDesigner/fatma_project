@@ -67,3 +67,23 @@
     align-items: center;
     justify-content: center;
 }
+.edit-confirm{
+    background: #177ca0;
+    border: none;
+    width: 30px;
+    height: 30px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.show-btn{
+    background: #177ca0;
+    border: none;
+    width: 30px;
+    height: 30px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProduitRequest;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Requests\EventUpdateRequest;
+use App\Http\Requests\ProduitUpdateRequest;
 
 class ProduitController extends Controller
 {
@@ -30,7 +31,12 @@ class ProduitController extends Controller
         if(session('updated')){
             Alert::success('Success Title', session('updated'));
         }
-        $produits = produit::paginate(10);
+        if(Auth::user()->isAdmin()){
+
+            $produits = Produit::paginate(10);
+        } else {
+            $produits = Auth::user()->produits()->paginate(10);
+        }
 
         return view('admin.produits.index', compact('produits'));
     }
@@ -76,7 +82,7 @@ class ProduitController extends Controller
      */
     public function show(produit $produit)
     {
-        //
+        return view('admin.produits.show', compact('produit'));
     }
 
     /**
@@ -98,12 +104,11 @@ class ProduitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(produitRequest $request, produit $produit)
+    public function update(ProduitUpdateRequest $request, produit $produit)
     {
         $produit->update($request->all());
-        return redirect('admin/produits')->with('updated', 'Le produit à été modifié avec succée');
-        
-        
+
+        return redirect('fournisseur/produits')->with('updated', 'Le produit à été modifié avec succée');
     }
     
     /**

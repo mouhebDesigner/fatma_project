@@ -22,7 +22,7 @@
         
         <link href="{{ asset('front/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     </head>
-    <body oncontextmenu="return false;">
+    <body>
 
         @include('includes.header')
         @include('includes.slider')
