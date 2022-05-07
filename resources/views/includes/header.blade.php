@@ -1,7 +1,5 @@
 <header id="header" class="default">
-    @if(Auth::check())
-      @include('includes.topBar')
-    @endif
+    
     <div class="menu">
       <div class="container">
         <div class="row">
