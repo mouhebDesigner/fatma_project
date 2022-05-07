@@ -30,22 +30,22 @@
 
                             <div class="card">
                             <div class="card-header">
-                                <div class="d-flex justify-content-between">
-                                    <h3 class="m-0">Liste des produits</h3>
-                                    <a href="{{ url('fournisseur/produits/create') }}" class="add_button">
-                                        <i class="fa fa-plus"></i>
-                                    </a>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="d-flex justify-content-between">
+                                            <h3 class="m-0">Liste des livreurs</h3>
+                                             
+                                            <a href="{{ url('admin/livreurs/create') }}">
+                                                <i class="fa fa-plus"></i>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
-
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            
-                                        </div>
-                                    </div>
+                                    
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <table id="example1" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
@@ -58,48 +58,50 @@
                                                             Nom
                                                         </th>
                                                         <th>
-                                                            Quantité
+                                                            Prénom
                                                         </th>
                                                         <th>
-                                                            Prix
+                                                            Email
                                                         </th>
                                                         <th>
-                                                            Catégorie
+                                                            Adresse
                                                         </th>
+                                                        <th>
+                                                            Téléphone
+                                                        </th>
+                                                        
                                                         <th>
                                                             Action
                                                         </th>
-
                                                     </tr>
-
                                                 </thead>
                                                 <tbody>
-                                                    @foreach($produits as $produit)
+                                                    @foreach($livreurs as $livreur)
                                                         <tr>
-                                                            <td>{{ $produit->id }}</td>
-                                                            <td>{{ $produit->name }}</td>
-                                                            <td>{{ $produit->quantity }}</td>
-                                                            <td>{{ $produit->price }}</td>
-                                                            <td>{{ $produit->categorie->label }}</td>
+                                                            <td>{{ $livreur->id }}</td>
+                                                            <td>{{ $livreur->nom }}</td>
+                                                            <td>{{ $livreur->prenom }}</td>
+                                                            <td>{{ $livreur->email }}</td>
+                                                            <td>{{ $livreur->adresse }}</td>
+                                                            <td>{{ $livreur->numtel }}</td>
                                                             <td>
                                                                 <div class="d-flex justify-content-around">
                                                                     
-                                                                    <button type="submit" class="btn-delete delete-confirm" data-model="produit" data-url="{{ route('fournisseur.produits.destroy', ['produit' => $produit]) }}" >
+                                                                    <button type="submit" class="btn-delete delete-confirm" data-model="livreur" data-url="{{ route('admin.livreurs.destroy', ['livreur' => $livreur]) }}" >
                                                                         <i class="fa fa-trash"></i>
                                                                     </button>
-                                                                    <a href="{{ route('fournisseur.produits.edit', ['produit' => $produit]) }}" data-model="produit" class="edit-confirm">
-                                                                        <i class="fa fa-edit"></i>
-                                                                    </a>
-                                                                    <a href="{{ route('fournisseur.produits.show', ['produit' => $produit]) }}" data-model="produit" class="show-btn">
-                                                                        <i class="fa fa-info"></i>
+                                                                    <a href="{{ url('admin/livreurs/'.$livreur->id.'/edit') }}" data-model="livreur" class="btn-edit edit-confirm">
+                                                                        <i class="fa fa-pen"></i>
                                                                     </a>
                                                                 </div>
                                                             </td>
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
-                                               
                                             </table>
+                                            <div class="d-flex justify-content-center">
+                                                {{ $livreurs->links() }}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -128,5 +130,4 @@
     <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
-    
 @endsection

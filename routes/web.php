@@ -1,11 +1,16 @@
 <?php
 
+use App\Models\Demande;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\LivreurController;
+use App\Http\Controllers\MissionController;
 use App\Http\Controllers\CategorieController;
-use App\Http\Controllers\FournisseurController;
 use App\Http\Controllers\Admin\ProduitController;
+use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\VehiculeController;
+use App\Http\Controllers\Admin\LivraisonController;
 use App\Http\Controllers\ProduitController as ProduitControllerFront;
 
 /*
@@ -27,10 +32,15 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::resources([
             'categories' => CategorieController::class,
-            'fournisseurs' => FournisseurController::class,
+            'livreurs' => LivreurController::class,
             'clients' => ClientController::class,
             'users' => UserController::class,
+            'livraisons' => LivraisonController::class,
+            'vehicules' => VehiculeController::class,
         ]);
+        Route::post('missions', [MissionController::class, 'store'])->name('missions.store');
+        Route::get('missions', [MissionController::class, 'index'])->name('missions.index');
+        Route::get('livreur/{demande}/affect', [LivraisonController::class, 'affect'])->name('livreur.affect');
         Route::get('commandes/{client}', [CommandeController::class, 'getCommandeByClient'])->name('commandes.client');
         Route::get('approuver/{user}', [UserController::class, 'approuver'])->name('approuver');
         Route::get('refuser/{user}', [UserController::class, 'refuser'])->name('refuser');
@@ -39,15 +49,15 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::prefix('fournisseur')->name('fournisseur.')->group(function () {
         Route::resources([
-            'produits' => ProduitController::class,
+            'demandes' => ProduitController::class,
         ]);
-        Route::get('commandes/{client}', [CommandeController::class, 'getCommandeByClient'])->name('commandes.client');
     });
 });
+Route::get('profile', [ProfileController::class, "index"]);
+Route::put('profile', [ProfileController::class, "update"]);
 Route::get('/home', function () {
     return view('admin.home');
 });
-Route::resource('produits', ProduitControllerFront::class)->only('show', 'index');
 
 Route::get('/login', function () {
     return view('auth.login');
@@ -62,3 +72,9 @@ Route::get('register/client', function(){
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('downloads/{id}', function($id){
+    $demande = Demande::find($id);
+    $filepath = public_path('uploads/').$demande->document;
+    return Response::download($filepath);
+})->name('download.file');

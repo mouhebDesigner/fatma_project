@@ -28,7 +28,7 @@ class CreateUsersTable extends Migration
             $table->string('adresse')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('role', ["client", "admin", "fournisseur"]);
+            $table->enum('role', ["client", "admin", "fournisseur", "livreur"]);
             $table->boolean('approuver')->default(0)->nullable();
             $table->foreignId('categorie_id')->nullable()->constrained('categories')->onUpdate('cascade');
             $table->rememberToken();

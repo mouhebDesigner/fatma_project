@@ -20,20 +20,21 @@
             </p>
         </a>
     </li>
-    <li class="nav-item @if(Request::is('admin/fournisseurs*')) active @endif">
-        <a href="{{ url('admin/fournisseurs') }}" class="nav-link ">
+    
+    <li class="nav-item @if(Request::is('admin/livreurs*')) active @endif">
+        <a href="{{ url('admin/livreurs') }}" class="nav-link ">
             <i class="nav-icon fas fa-user"></i>
             <p>
-            Gérer les fournisseurs
+            Les Livreurs
             <i class="right fas fa-angle-left"></i>
             </p>
         </a>
     </li>
-    <li class="nav-item @if(Request::is('admin/clients*')) active @endif">
-        <a href="{{ url('admin/clients') }}" class="nav-link ">
+    <li class="nav-item @if(Request::is('admin/vehicules*')) active @endif">
+        <a href="{{ url('admin/vehicules') }}" class="nav-link ">
             <i class="nav-icon fas fa-user"></i>
             <p>
-            Les Clients
+            Les Véhicule
             <i class="right fas fa-angle-left"></i>
             </p>
         </a>
@@ -43,6 +44,15 @@
             <i class="nav-icon fas fa-user"></i>
             <p>
             Gérer les catégories
+            <i class="right fas fa-angle-left"></i>
+            </p>
+        </a>
+    </li>
+    <li class="nav-item @if(Request::is('admin/missions*')) active @endif">
+        <a href="{{ url('admin/livraisons') }}" class="nav-link ">
+            <i class="nav-icon fas fa-chalkboard-teacher"></i>
+            <p>
+            Demande de livraison
             <i class="right fas fa-angle-left"></i>
             </p>
         </a>

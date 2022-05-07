@@ -11,20 +11,11 @@
         </a>
     </li>
   
-    <li class="nav-item @if(Request::is('fournisseur/produits*')) active @endif">
-        <a href="{{ url('fournisseur/produits') }}" class="nav-link ">
+    <li class="nav-item @if(Request::is('fournisseur/demandes*')) active @endif">
+        <a href="{{ url('fournisseur/demandes') }}" class="nav-link ">
             <i class="nav-icon fas fa-user"></i>
             <p>
-            Porduits
-            <i class="right fas fa-angle-left"></i>
-            </p>
-        </a>
-    </li>
-    <li class="nav-item @if(Request::is('fournisseur/commandes*')) active @endif">
-        <a href="{{ url('fournisseur/commandes') }}" class="nav-link ">
-            <i class="nav-icon fas fa-user"></i>
-            <p>
-            Commandes
+            Demande de livraison
             <i class="right fas fa-angle-left"></i>
             </p>
         </a>

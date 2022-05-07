@@ -26,17 +26,7 @@
                       <a class="nav-link" href="index.html">Acceuil </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="{{ url('/produits') }}">Produits</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="{{ url('/fournisseurs') }}">Fournisseurs</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">A propos</a>
-                    </li>
-                  
-                    <li class="nav-item">
-                      <a class="nav-link" href="{{ url('contact') }}">Contact</a>
+                      <a class="nav-link" href="{{ url('fournisseur/livraisons/create') }}">Demande livraison</a>
                     </li>
                   </ul>
                 </div>
@@ -124,6 +114,9 @@
                   @guest
                   <li class="partner-btn">
                     <a href="{{ url('login') }}" class="b-btn btn-link">Se connecter</a>
+                  </li>
+                  <li class="partner-btn">
+                      <a href="{{ route('fournisseur_register') }}" class="partner-btn1 btn-link">Inscrire</a>
                   </li>
                   @else 
                   <li class="nav-item dropdown">

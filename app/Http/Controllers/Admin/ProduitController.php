@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Auth;
+use App\Models\Demande;
 use App\Models\Produit;
 use App\Models\Ressource;
 use Illuminate\Http\Request;
@@ -33,12 +34,12 @@ class ProduitController extends Controller
         }
         if(Auth::user()->isAdmin()){
 
-            $produits = Produit::paginate(10);
+            $demandes = Demande::paginate(10);
         } else {
-            $produits = Auth::user()->produits()->paginate(10);
+            $demandes = Auth::user()->demandes()->paginate(10);
         }
 
-        return view('admin.produits.index', compact('produits'));
+        return view('admin.livraisons.index', compact('demandes'));
     }
 
     /**
@@ -48,7 +49,7 @@ class ProduitController extends Controller
      */
     public function create()
     {
-        return view('admin.produits.create');
+        return view('admin.livraisons.create');
     }
 
     /**
@@ -57,20 +58,15 @@ class ProduitController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProduitRequest $request)
+    public function store(Request $request)
     {
-        $produit = Produit::create($request->all());
-        if($request->hasFile('images')){
-            foreach($request->images as $key => $image){
-               
-                $resource = new Ressource();
-                $resource->path = $image->store('ressources');
-                $resource->type = "image";
-                $resource->produit_id = $produit->id;
-                $resource->save();
-            }
+        $demande = Demande::create($request->all());
+        if($request->hasFile('document')){
+            $demande->document = $request->document->store('uploads');
         }
-        return redirect('fournisseur/produits')->with('created', 'Le produit à été crée avec succée');
+        $demande->save();
+        
+        return redirect('fournisseur/livraisons')->with('created', 'La demande à été crée avec succée');
 
     }
 
@@ -82,7 +78,7 @@ class ProduitController extends Controller
      */
     public function show(produit $produit)
     {
-        return view('admin.produits.show', compact('produit'));
+        return view('admin.livraisons.show', compact('produit'));
     }
 
     /**
@@ -91,10 +87,9 @@ class ProduitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(produit $produit)
+    public function edit(Demande $demande)
     {
-
-        return view('admin.produits.edit', compact('produit'));
+        return view('admin.livraisons.edit', compact('demande'));
     }
 
     /**
@@ -104,11 +99,11 @@ class ProduitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProduitUpdateRequest $request, produit $produit)
+    public function update(Request $request, Demande $demande)
     {
-        $produit->update($request->all());
+        $demande->update($request->all());
 
-        return redirect('fournisseur/produits')->with('updated', 'Le produit à été modifié avec succée');
+        return redirect('fournisseur/demandes')->with('updated', 'Le produit à été modifié avec succée');
     }
     
     /**
@@ -117,12 +112,12 @@ class ProduitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(produit $produit)
+    public function destroy(demande $demande)
     {
-        $produit->delete();
+        $demande->delete();
         
         return response()->json([
-            "deleted" => "Catégorie à été supprimé"
+            "deleted" => "Demande à été supprimé"
         ]);
     }
 }
