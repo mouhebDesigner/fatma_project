@@ -26,91 +26,21 @@
                       <a class="nav-link" href="index.html">Acceuil </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="{{ url('fournisseur/livraisons/create') }}">Demande livraison</a>
+                      @guest 
+
+                        <a class="nav-link" href="{{ url('fournisseur/demandes/create') }}">Demande livraison</a>
+                      @else 
+                        @if(Auth::user()->isFournisseur())
+                          <a class="nav-link" href="{{ url('fournisseur/demandes/create') }}">Demande livraison</a>                          
+                        @endif
+
+                      @endif
                     </li>
                   </ul>
                 </div>
               </nav>
               <div class="icons-set">
                 <ul class="list-inline">
-                  <li class="icon-items nav-item dropdown ">
-                    <a class="nav-link dropdown-toggle-no-caret" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-search"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown1">
-                      <div class="notification-item">
-                        <div class="search-details">
-                          <form class="form-inline">
-                            <input class="form-control " type="search" placeholder="Search" aria-label="Search">
-                            <button class="s-btn btn-link " type="submit">
-                              <i class="fas fa-search"></i>
-                            </button>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="icon-items nav-item dropdown">
-                    <a class="nav-link dropdown-toggle-no-caret" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-bell"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown2">
-                      <div class="notification-item">
-                        <div class="property">
-                          <ul>
-                            <li>
-                              <div class="setting">
-                                <a href="#">Setting</a>
-                              </div>
-                            </li>
-                            <li>
-                              <div class="clear">
-                                <a href="#">Clear</a>
-                              </div>
-                            </li>
-                          </ul>
-                        </div>
-                        <div class="notification-details">
-                          <div class="media">
-                            <div class="media-left">
-                              <a href="#">
-                                <img src="images/notification-img-2.png" alt="">
-                              </a>
-                            </div>
-                            <div class="media-body">
-                              <h4 class="media-heading">Jassica William</h4>
-                              <p>comment on your Video.</p>
-                              <div class="comment-date">10 min ago</div>
-                            </div>
-                          </div>
-                          <div class="media">
-                            <div class="media-left">
-                              <a href="#">
-                                <img src="images/notification-img-3.png" alt="">
-                              </a>
-                            </div>
-                            <div class="media-body">
-                              <h4 class="media-heading">Congratulations!</h4>
-                              <p>Your Order is Accepted.</p>
-                              <div class="comment-date"> 15 min ago </div>
-                            </div>
-                          </div>
-                          <div class="media">
-                            <div class="media-left">
-                              <a href="#">
-                                <img src="images/notification-img-4.png" alt="">
-                              </a>
-                            </div>
-                            <div class="media-body">
-                              <h4 class="media-heading">Order Delivered!</h4>
-                              <p>Your Order is Delivered.</p>
-                              <div class="comment-date">20 min ago</div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
                   @guest
                   <li class="partner-btn">
                     <a href="{{ url('login') }}" class="b-btn btn-link">Se connecter</a>
@@ -121,15 +51,19 @@
                   @else 
                   <li class="nav-item dropdown">
                     <a class="dropdown-toggle-no-caret" href="#" id="accountDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-user-circle"></i>John Doe <i class="fas fa-caret-down"></i>
+                      <i class="fas fa-user-circle"></i>{{ Auth::user()->nom }}{{ Auth::user()->prenom }} <i class="fas fa-caret-down"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="accountDropdown">
-                      <a class="dropdown-item" href="my_profile_dashbord.html"> My Profile</a>
-                      <a class="dropdown-item" href="#"> Bookmarks</a>
-                      <a class="dropdown-item" href="#"> Booking Tables</a>
-                      <a class="dropdown-item" href="#"> Find Friends</a>
-                      <a class="dropdown-item" href="setting.html"> Setting</a>
-                      <a class="dropdown-item" href="signin.html"> Logout</a>
+                      <a class="dropdown-item" href="{{ url('profile') }}"> Profile</a>
+                       <a class="dropdown-item" href="{{ route('logout') }}"
+                          onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                          {{ __('Déconnecter') }}
+                      </a>
+
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                          @csrf
+                      </form>
                     </div>
                   </li>
                   @endif

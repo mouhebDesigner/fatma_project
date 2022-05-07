@@ -55,6 +55,9 @@ class User extends Authenticatable
     public function isCustomer(){
         return Auth::user()->role == "customer";
     }
+    public function isFournisseur(){
+        return Auth::user()->role == "fournisseur";
+    }
 
     public function categorie(){
         return $this->belongsTo(Categorie::class);
