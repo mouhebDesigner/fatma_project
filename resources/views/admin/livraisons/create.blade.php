@@ -43,7 +43,7 @@
 
                                 
                                 <div class="form-group">
-                                    <label for="date">Date/heure</label>
+                                    <label for="date">Date</label>
                                     <input type="date" class="form-control" name="date" value="{{ old('date') }}" id="name" placeholder="Saisir quantité de produit">
                                     @error('date')
                                         <p class="text-danger">{{ $message }}</p>

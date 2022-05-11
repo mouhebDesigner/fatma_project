@@ -66,7 +66,7 @@ class ProduitController extends Controller
         }
         $demande->save();
         
-        return redirect('fournisseur/livraisons')->with('created', 'La demande à été crée avec succée');
+        return redirect('fournisseur/demandes')->with('created', 'La demande à été crée avec succée');
 
     }
 
