@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Models\Mission;
 use Illuminate\Http\Request;
 use App\Http\Requests\MissionRequest;
-use Auth;
+use RealRashid\SweetAlert\Facades\Alert;
+
 class MissionController extends Controller
 {
 
