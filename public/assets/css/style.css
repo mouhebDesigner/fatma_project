@@ -36,8 +36,11 @@
 
 }
 .card-header{
-    background-color: #0e3c61 !important;
+    background-color: #d3eae6  !important;
     color: white;
+}
+.card-header h3{
+    color: #0d8a72
 }
 .add_button{
     background: #f9b042;
@@ -86,4 +89,27 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.navbar-light {
+    background-color: #0d8a72 !important;
+}
+.layout-navbar-fixed .wrapper .sidebar-dark-primary .brand-link:not([class*=navbar]) {
+    background-color: #0d8a72 !important;
+}
+[class*=sidebar-dark-] {
+    background-color: white !important;
+}
+.active {
+    background: #0d8a722e !important;
+    border-radius: 20px;
+}
+.active a {
+    color: #0d8a72 !important;
+}
+[class*=sidebar-dark-] .nav-sidebar>.nav-item.menu-open>.nav-link, [class*=sidebar-dark-] .nav-sidebar>.nav-item:hover>.nav-link, [class*=sidebar-dark-] .nav-sidebar>.nav-item>.nav-link:focus{
+    color: black
+}
+[class*=sidebar-dark-] .sidebar a {
+    color: #0d8a72;
 }
