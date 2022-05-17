@@ -28,7 +28,7 @@
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-6 col-md-6 col-12">
-              <h1>Connecter maintenant</h1>
+              <h1>Connexion</h1>
               <div class="login-container">
                 <div class="row">
                   <div class="col-lg-12 col-md-12 col-12">
@@ -57,7 +57,7 @@
                             @enderror
                         </div>
                         <button type="submit" class="login-btn btn-link">
-                            Connecter
+                            Se connecter
                         </button>
                         @if (Route::has('password.request'))
                             <div class="forgot-password">

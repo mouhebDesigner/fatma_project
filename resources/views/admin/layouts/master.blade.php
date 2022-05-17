@@ -136,6 +136,42 @@
                   }
               });
           });
+          $(".update-confirm").on('change', function(e){
+          e.preventDefault();
+          var url = $(this).data('url');
+          console.log(url);
+          swal({
+                  title: "êtes vous sûr?",
+                  text: "Voulez vous modifier le status de ce mission",
+                  icon: "warning",
+                  buttons: true,
+                  dangerMode: true,
+              })
+              .then((willDelete) => {
+                  if (willDelete) {
+                      var data = {
+                          "_token" : $('input[name=_token]').val(),
+                          "etat": $(this).val()
+                      };
+                      $.ajax({
+                          type: "PUT",
+                          url: url,
+                          data: data,
+                          success: function(response){
+                              console.log(response);
+                              swal(response.deleted, {
+                                  icon: "success",
+                              }).then((result) => {
+                                  location.reload();
+                              });
+                          }
+                      })
+                  } else {
+                      swal("Votre action est annulé");
+                  }
+              });
+          });
+          
       });
     </script>
 </body>

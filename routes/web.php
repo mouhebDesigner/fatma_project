@@ -1,6 +1,9 @@
 <?php
 
 use App\Models\Demande;
+use App\Models\Mission;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClientController;
@@ -12,7 +15,6 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\VehiculeController;
 use App\Http\Controllers\Admin\LivraisonController;
 use App\Http\Controllers\ProduitController as ProduitControllerFront;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,6 +47,23 @@ Route::middleware(['auth'])->group(function () {
         Route::get('approuver/{user}', [UserController::class, 'approuver'])->name('approuver');
         Route::get('refuser/{user}', [UserController::class, 'refuser'])->name('refuser');
     });
+});
+Route::get('missions', function(){
+    $missions = Auth::user()->missions()->get();
+
+    return view('admin.missions.index', compact('missions'));
+});
+Route::put('mission/{id}/modifierStatus/', function(Request $request, $id){
+    $mission = Mission::find($id);
+    $mission->etat = $request->etat;
+
+    $mission->save();
+
+    return response()->json([
+        "deleted" => "Mission à été modifié avec succé"
+    ]);
+
+
 });
 Route::middleware(['auth'])->group(function () {
     Route::prefix('fournisseur')->name('fournisseur.')->group(function () {

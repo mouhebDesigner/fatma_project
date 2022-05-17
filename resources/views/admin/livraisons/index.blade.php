@@ -60,6 +60,9 @@
                                                             Article
                                                         </th>
                                                         <th>
+                                                            Fournisseur
+                                                        </th>
+                                                        <th>
                                                             Destination
                                                         </th>
                                                         <th>
@@ -86,6 +89,10 @@
                                                         <tr>
                                                             <td>{{ $demande->id }}</td>
                                                             <td>{{ $demande->article }}</td>
+                                                            <td>
+                                                                {{ $demande->user->nom }}
+                                                                {{ $demande->user->prenom }}
+                                                            </td>
                                                             <td>{{ $demande->destination }}</td>
                                                             <td>{{ $demande->date }}</td>
                                                             <td>{{ $demande->nom_client }}</td>
@@ -112,9 +119,8 @@
                                                                     </a>
                                                                 </div>
                                                                 @else 
-                                                                    <a href="{{ route('admin.livreur.affect', ['demande' => $demande]) }}" style="width: 104px;
-    height: 44px;" data-model="produit" class="show-btn">
-                                                                        Affecter livreur
+                                                                    <a href="{{ route('admin.livreur.affect', ['demande' => $demande]) }}" style="width: 104px;height: 44px;" data-model="produit" class="show-btn">
+                                                                        Lancer mission
                                                                     </a> 
                                                                 @endif
                                                             </td>

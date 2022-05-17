@@ -27,7 +27,8 @@ class User extends Authenticatable
         "numtel",
         "adresse",
         "cin",
-        "password"
+        "password",
+        "role"
     ];
 
     /**
@@ -52,6 +53,9 @@ class User extends Authenticatable
     public function isAdmin(){
         return Auth::user()->role == "admin";
     }
+    public function isLivreur(){
+        return Auth::user()->role == "livreur";
+    }
     public function isCustomer(){
         return Auth::user()->role == "customer";
     }
@@ -65,6 +69,9 @@ class User extends Authenticatable
     
     public function demandes(){
         return $this->hasMany(Demande::class);
+    }
+    public function missions(){
+        return $this->hasMany(Mission::class, "livreur_id", "id");
     }
 
 }

@@ -40,9 +40,7 @@
                                         <div class="col-md-12">
                                             <div class="d-flex justify-content-between">
                                              
-                                                <a href="{{ url('admin/categories/create') }}">
-                                                    <i class="fa fa-plus"></i>
-                                                </a>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -64,10 +62,15 @@
                                                         <th>
                                                             livreur
                                                         </th>
+                                                        <th>
+                                                            Status
+                                                        </th>
+                                                        @if(Auth::user()->isLivreur())
 
                                                         <th>
                                                             Action
                                                         </th>
+                                                        @endif
 
                                                     </tr>
 
@@ -80,17 +83,24 @@
                                                             <td>{{ $mission->vehicule->marque }}</td>
                                                             <td>{{ $mission->livreur->nom }} {{ $mission->livreur->prenom }}</td>
                                                             <td>
+                                                                {{ $mission->etat }}
+                                                            </td>
+                                                            <td>
+                                                                @if(Auth::user()->isAdmin())
+                                                               
+                                                                @else 
                                                                 <div class="d-flex justify-content-around">
                                                                     
-                                                                    <button type="submit" class="btn-delete delete-confirm" data-model="categorie" data-url="{{ route('admin.categories.destroy', ['category' => $mission]) }}" >
-                                                                        <i class="fa fa-trash"></i>
-                                                                    </button>
-                                                                    <a href="{{ url('admin/categories/'.$mission->id.'/edit') }}" data-model="categorie" class="edit-confirm">
-                                                                        <i class="fa fa-edit"></i>
-                                                                    </a>
+                                                                    <select class="update-confirm" name="etat" id="" data-url="{{ url('mission/'.$mission->id.'/modifierStatus') }}">
+                                                                        <option value="" selected disabled>Modifier status</option>
+                                                                        <option value="en cours">en cours</option>
+                                                                        <option value="terminé">terminé</option>
+                                                                        <option value="non traité">non traité</option>
+                                                                    </select>
                                                                  
-                                                                   
                                                                 </div>
+
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                     @endforeach

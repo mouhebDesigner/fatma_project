@@ -11,6 +11,7 @@ class Mission extends Model
 
     protected $fillable = [
         "label",
+        "etat",
         "vehicule_id",
         "demande_id",
         "livreur_id"

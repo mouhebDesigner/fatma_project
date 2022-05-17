@@ -15,7 +15,7 @@
         <a href="{{ url('admin/users') }}" class="nav-link ">
             <i class="nav-icon fas fa-user"></i>
             <p>
-            Liste d'inscription
+            Fournisseurs
             <i class="right fas fa-angle-left"></i>
             </p>
         </a>
@@ -25,7 +25,7 @@
         <a href="{{ url('admin/livreurs') }}" class="nav-link ">
             <i class="nav-icon fas fa-user"></i>
             <p>
-            Les Livreurs
+            Livreurs
             <i class="right fas fa-angle-left"></i>
             </p>
         </a>
@@ -34,7 +34,7 @@
         <a href="{{ url('admin/vehicules') }}" class="nav-link ">
             <i class="nav-icon fas fa-user"></i>
             <p>
-            Les Véhicule
+            Véhicules
             <i class="right fas fa-angle-left"></i>
             </p>
         </a>
@@ -43,16 +43,16 @@
         <a href="{{ url('admin/categories') }}" class="nav-link ">
             <i class="nav-icon fas fa-user"></i>
             <p>
-            Gérer les catégories
+            Catégorie
             <i class="right fas fa-angle-left"></i>
             </p>
         </a>
     </li>
-    <li class="nav-item @if(Request::is('admin/missions*')) active @endif">
+    <li class="nav-item @if(Request::is('admin/livraisons*')) active @endif">
         <a href="{{ url('admin/livraisons') }}" class="nav-link ">
             <i class="nav-icon fas fa-chalkboard-teacher"></i>
             <p>
-            Demande de livraison
+            Demande
             <i class="right fas fa-angle-left"></i>
             </p>
         </a>
@@ -61,7 +61,7 @@
         <a href="{{ url('admin/missions') }}" class="nav-link ">
             <i class="nav-icon fas fa-chalkboard-teacher"></i>
             <p>
-            Gérer les missions
+            Missions
             <i class="right fas fa-angle-left"></i>
             </p>
         </a>

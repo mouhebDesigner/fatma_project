@@ -17,6 +17,7 @@
                         <img src="images/partner-with-us/icon-1.svg" alt="">
                         <h1>S'inscrire comme fournisseur</h1>
                     </div>
+                    
                     <div class="row">
                         <div class="col">
                             <div class="basic-info">

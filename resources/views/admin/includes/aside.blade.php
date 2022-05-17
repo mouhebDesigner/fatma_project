@@ -42,8 +42,10 @@
       <nav class="mt-2">
         @if(Auth::user()->isAdmin())
           @include('admin.includes.admin_menu')
-        @else 
+        @elseif(Auth::user()->isFournisseur()) 
           @include('admin.includes.fournisseur_menu')
+        @else 
+          @include('admin.includes.livreur_menu')
         @endif
       </nav>
       <!-- /.sidebar-menu -->

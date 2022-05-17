@@ -16,6 +16,7 @@ class CreateMissionsTable extends Migration
         Schema::create('missions', function (Blueprint $table) {
             $table->id();
             $table->string('label');
+            $table->enum('etat', ['en attente', 'en cours', 'terminé', 'non traité']);
             $table->foreignId('vehicule_id')->nullable()->constrained('vehicules')->onUpdate('cascade');
             $table->foreignId('demande_id')->nullable()->constrained('demandes')->onUpdate('cascade');
             $table->foreignId('livreur_id')->nullable()->constrained('users')->onUpdate('cascade');

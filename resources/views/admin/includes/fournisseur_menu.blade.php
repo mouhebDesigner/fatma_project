@@ -20,23 +20,5 @@
             </p>
         </a>
     </li>
-    <li class="nav-item @if(Request::is('fournisseur/livreurs*')) active @endif">
-        <a href="{{ url('fournisseur/livreurs') }}" class="nav-link ">
-            <i class="nav-icon fas fa-user"></i>
-            <p>
-            Livreurs
-            <i class="right fas fa-angle-left"></i>
-            </p>
-        </a>
-    </li>
-    <li class="nav-item @if(Request::is('fournisseur/missions*')) active @endif">
-        <a href="{{ url('fournisseur/missions') }}" class="nav-link ">
-            <i class="nav-icon fas fa-chalkboard-teacher"></i>
-            <p>
-            Gérer les missions
-            <i class="right fas fa-angle-left"></i>
-            </p>
-        </a>
-    </li>
    
 </ul>
